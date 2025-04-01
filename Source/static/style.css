@@ -103,7 +103,31 @@ button:hover {
     background-color: #a7d9a7;
 }
 
-/* Responsive Adjustments */
+/* Desktop-specific Styles */
+@media (min-width: 1200px) {
+    .chat-container {
+        max-width: 100%;
+    }
+    
+    .chat-messages {
+        min-height: 450px;
+        max-height: 600px;
+    }
+    
+    .input-area {
+        padding: 1.25rem;
+    }
+    
+    #userInput {
+        font-size: 1.1rem;
+    }
+    
+    .btn-primary {
+        font-size: 1rem;
+        max-width: 300px;
+    }
+}
+
 @media (max-width: 768px) {
     .input-area {
         flex-direction: column;
