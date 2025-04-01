@@ -12,25 +12,68 @@
     </header>
     
     <main>
-        <!-- User Preferences Input -->
-        <section class="preferences">
-            <h2>Enter Your Game Preferences</h2>
-            <textarea id="gamePreferences" placeholder="Describe your ideal game experience..." maxlength="200"></textarea>
-        </section>
-
-        <!-- Chatbox -->
-        <section class="chatbox">
-            <h2>Ask GameSage</h2>
-            <div id="chatWindow"></div>
-            <input type="text" id="chatInput" placeholder="Ask something..." onkeypress="handleKeyPress(event)">
-            <button onclick="sendMessage()">Send</button>
-        </section>
-
+        <!-- Chat Container and Contents -->
+        <div class="chat-container">
+            <div class="chat-messages" id="chatWindow">
+        <!-- Chat History should be here -->
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="chatInput" placeholder="What would you like to ask me about?">
+                <button class="button" id="specButton">Ask</button>
+            </div>
+        </div>
         <!-- Random Recommendation -->
-        <section class="recommendation">
-            <h2>Need a Random Recommendation?</h2>
-            <button onclick="getRecommendation()">Random Recommendation</button>
-            <p id="recommendationText"></p>
+        <section class="recommendation-section">
+            <h2>Recommend by Genre:</h2>
+            
+            <div class="genre-selection">
+                <div class="select-container">
+                    <select id="primaryGenre">
+                        <option value="" disabled selected>Select</option>
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="rpg">RPG</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="simulation">Simulation</option>
+                        <option value="sports">Sports</option>
+                        <option value="racing">Racing</option>
+                        <option value="puzzle">Puzzle</option>c
+                        <option value="multiplayer">Multiplayer</option>
+                        <option value="singleplayer">Singleplayer</option>
+                        <option value="indie">Indie</option>
+                        <option value="aaa">AAA</option>
+                        <option value="casual">Casual</option>
+                        <option value="competitive">Competitive</option>
+                        <option value="open-world">Open World</option>
+                        <option value="story-rich">Story-Rich</option>
+                    </select>
+                </div>
+                
+                <div class="select-container">
+                    <select id="secondaryGenre">
+                        <option value="" disabled selected>Select</option>
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="rpg">RPG</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="simulation">Simulation</option>
+                        <option value="sports">Sports</option>
+                        <option value="racing">Racing</option>
+                        <option value="puzzle">Puzzle</option>c
+                        <option value="multiplayer">Multiplayer</option>
+                        <option value="singleplayer">Singleplayer</option>
+                        <option value="indie">Indie</option>
+                        <option value="aaa">AAA</option>
+                        <option value="casual">Casual</option>
+                        <option value="competitive">Competitive</option>
+                        <option value="open-world">Open World</option>
+                        <option value="story-rich">Story-Rich</option>
+                    </select>
+                </div>
+                
+                <button class="button" id="recommendButton">RECOMMEND ME A GAME</button>
+            </div>
         </section>
     </main>
 
