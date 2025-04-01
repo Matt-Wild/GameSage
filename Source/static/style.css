@@ -64,13 +64,17 @@ main {
 
 .user-message {
     background-color: #e6f7e6;
-    margin-left: auto;
+    margin: 2rem;
     text-align: right;
+    border-radius: 25% 10%;
 }
 
 .ai-message {
     background-color: #fff;
     border: 1px solid #ddd;
+    margin: 2rem;
+    text-align: left;
+    border-radius: 10% 25%;
 }
 
 .input-area {
@@ -78,7 +82,7 @@ main {
     border-top: 1px solid #ccc;
     padding: 0.75rem;
     background-color: #fff;
-    width: 80%;
+    width: 100%;
 }
 
 #userInput {
