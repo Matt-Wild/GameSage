@@ -20,7 +20,7 @@
             
             <div class="input-area">
                 <input type="text" id="chatInput" placeholder="What would you like to ask me about?">
-                <button class="button" id="specButton">Ask</button>
+                <button onclick="sendMessage()">Send</button>
             </div>
         </div>
         <!-- Random Recommendation -->
@@ -48,9 +48,6 @@
                         <option value="open-world">Open World</option>
                         <option value="story-rich">Story-Rich</option>
                     </select>
-                </div>
-                
-                <div class="select-container">
                     <select id="secondaryGenre">
                         <option value="" disabled selected>Select</option>
                         <option value="action">Action</option>
@@ -72,7 +69,7 @@
                     </select>
                 </div>
                 
-                <button class="button" id="recommendButton">RECOMMEND ME A GAME</button>
+                <button onclick="getRecommendation()">Random Recommendation</button>
             </div>
         </section>
     </main>
