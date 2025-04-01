@@ -10,12 +10,60 @@
     <header>
         <h1>Welcome to GameSage</h1>
     </header>
+    
     <main>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non nibh diam. Donec eget volutpat erat. Sed cursus nisl sapien, sed molestie tellus semper ac. Nulla vulputate hendrerit porttitor. Morbi vitae erat lacinia, sodales dolor tincidunt, ultricies tortor. Vivamus mattis rutrum metus vel commodo. Quisque at pellentesque turpis. Integer eu consectetur justo.</p>
-        <button onclick="alert('Hello from Flask!')">Click Me</button>
+        <!-- User Preferences Input -->
+        <section class="preferences">
+            <h2>Enter Your Game Preferences</h2>
+            <textarea id="gamePreferences" placeholder="Describe your ideal game experience..." maxlength="200"></textarea>
+        </section>
+
+        <!-- Chatbox -->
+        <section class="chatbox">
+            <h2>Ask GameSage</h2>
+            <div id="chatWindow"></div>
+            <input type="text" id="chatInput" placeholder="Ask something..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </section>
+
+        <!-- Random Recommendation -->
+        <section class="recommendation">
+            <h2>Need a Random Recommendation?</h2>
+            <button onclick="getRecommendation()">Random Recommendation</button>
+            <p id="recommendationText"></p>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2025 GameSage</p>
     </footer>
+
+    <script>
+        // Chat functionality
+        function sendMessage() {
+            let inputField = document.getElementById("chatInput");
+            let chatWindow = document.getElementById("chatWindow");
+
+            if (inputField.value.trim() === "") return; // Ignore empty messages
+
+            let userMessage = `<p><strong>You:</strong> ${inputField.value}</p>`;
+            let botResponse = `<p><strong>GameSage:</strong> Response</p>`;
+
+            chatWindow.innerHTML += userMessage + botResponse;
+            inputField.value = "";
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to the latest message
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+        // Random Recommendation functionality
+        function getRecommendation() {
+            document.getElementById("recommendationText").innerText = "Recommendation";
+        }
+    </script>
 </body>
 </html>
