@@ -86,8 +86,8 @@
 
             if (inputField.value.trim() === "") return; // Ignore empty messages
 
-            let userMessage = `<p><strong>You:</strong> ${inputField.value}</p>`;
-            let botResponse = `<p><strong>GameSage:</strong> Response</p>`;
+            let userMessage = `<div class = "user-message"> <strong>You:</strong> ${inputField.value}</div>`;
+            let botResponse = `<div class = "ai-message"><strong>GameSage:</strong> Response</div>`;
 
             chatWindow.innerHTML += userMessage + botResponse;
             inputField.value = "";
