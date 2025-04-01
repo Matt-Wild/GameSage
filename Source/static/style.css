@@ -30,7 +30,8 @@ h1 {
 }
 
 main {
-    max-width: 960px;
+    max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
     padding: 1.5rem;
     flex: 1;
@@ -43,6 +44,7 @@ main {
     border-radius: 4px;
     margin-bottom: 2rem;
     overflow: hidden;
+    width: 100%;
 }
 
 .chat-messages {
@@ -78,7 +80,7 @@ main {
 }
 
 #userInput {
-    flex: 2;
+    flex: 3;
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
