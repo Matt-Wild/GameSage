@@ -30,7 +30,7 @@ h1 {
 }
 
 main {
-    max-width: None;
+    max-width: 1200;
     width: 90%;
     margin: 0 auto;
     padding: 1.5rem;
@@ -45,6 +45,7 @@ main {
     margin-bottom: 2rem;
     overflow: hidden;
     width: 100%;
+    max-width: none;
 }
 
 .chat-messages {
