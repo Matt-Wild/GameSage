@@ -8,10 +8,10 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to GameSage</h1>
+       <h1>Welcome to GameSage</h1>
     </header>
     
-    <main>
+    <main class= "darkmode">
         <!-- Chat Container and Contents -->
         <div class="chat-container">
             <div class="chat-messages" id="chatWindow">
@@ -19,7 +19,7 @@
             </div>
             
             <div class="input-area">
-                <input type="text" id="chatInput" placeholder="What would you like to ask me about?">
+                <input type="text" id="chatInput" placeholder="Do you have a question?">
                 <button onclick="sendMessage()">Send</button>
             </div>
         </div>
@@ -86,8 +86,8 @@
 
             if (inputField.value.trim() === "") return; // Ignore empty messages
 
-            let userMessage = `<div class = "user-message"> <strong>You:</strong> ${inputField.value}</div>`;
-            let botResponse = `<div class = "ai-message"><strong>GameSage:</strong> Response</div>`;
+            let userMessage = `<strong>You:</strong><br><div class = "user-message"> ${inputField.value}</div>`;
+            let botResponse = `<strong><align="left">GameSage:</strong><br><div class = "ai-message"> Response</div>`;
 
             chatWindow.innerHTML += userMessage + botResponse;
             inputField.value = "";
