@@ -113,10 +113,10 @@ main {
 
 /* Send button with box styling */
 .send-button {
-    background-color: #4caf50;
+    background-color: #608371;
     color: white;
     padding: 0.5rem 1rem;
-    border: 2px solid #388e3c;
+    border: 2px solid #4B6658;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
@@ -168,7 +168,7 @@ main {
    width: 95%;
    align: center;
    background-color: var(--input-colour);
-   }
+}
 
 button {
     padding: 0.75rem 1rem;
