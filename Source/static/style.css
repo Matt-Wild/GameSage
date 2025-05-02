@@ -9,6 +9,7 @@
     --input-colour: #FFFFFF;
     --user-container: #7DAA93;
     --ai-container: #FFFFFF;
+    min-height: 0
 }
 /* Dark Theme */
 .darkmode{
@@ -21,6 +22,7 @@
     --input-container: #FFFFFF;
     --user-container: #7DAA93;
     --ai-container: #FFFFFF;
+    min-height: 0
 }
 /* Accessibility High Contrast Theme */
 .highcontrast{
@@ -33,6 +35,7 @@
     --input-container: #FFFFFF;
     --user-container: #7DAA93;
     --ai-container: #FFFFFF;
+    min-height: 0
 }
 
 * {
@@ -42,7 +45,7 @@
     font-family: Arial, sans-serif;
 }
 
-body {
+html, body {
     font-family: Arial, sans-serif;
     background-color: var(--base-colour);
     text-align: center;
