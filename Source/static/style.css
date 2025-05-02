@@ -86,6 +86,8 @@ main {
     box-sizing: border-box;
     min-height: 0;
     height: 100%; /* Allow vertical filling */
+    flex: 1;
+    flex-direction: row;
 }
 
 /* Recommendation section styling */
@@ -106,8 +108,9 @@ main {
     background-color: var(--base-variant);
     border: 1px solid #999;
     border-radius: 4px;
-    padding: 1rem 0 0 0; /* Top padding only */
+    padding: 1rem 0 0 0;
     color: white;
+    height: 100%;
     min-height: 0;
 }
 
