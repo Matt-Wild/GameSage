@@ -84,7 +84,7 @@ main {
 /* Recommendation section styling */
 .recommendation-section {
     width: 30%;
-    background-color: #1e1e1e;
+    background-color: var(--base-variant);
     padding: 1rem;
     border-radius: 8px;
     color: white;
@@ -151,7 +151,6 @@ main {
 .input-area {
     display: flex;
     border-top: 1px solid #ccc;
-    padding: 0.75rem;
     background-color: var(--accent-colour);
     width: 100%;
 }
