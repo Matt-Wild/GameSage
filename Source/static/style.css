@@ -69,6 +69,8 @@ main {
     margin: 0 auto;
     padding: 1.5rem;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Layout: Chat and Recommendation side-by-side */
@@ -83,24 +85,24 @@ main {
 
 /* Recommendation section styling */
 .recommendation-section {
-    width: 30%;
     background-color: var(--base-variant);
     padding: 1rem;
     border-radius: 8px;
     color: white;
+    flex: 1;
+    max-width: 25%;
 }
 
 /* Chat Container Styles */
 .chat-container {
-    flex: 1;
+    flex: 3;
     display: flex;
     flex-direction: column;
     background-color: var(--base-variant);
     border: 1px solid #999;
     border-radius: 4px;
-    padding: 1rem;
+    padding: 1rem 0 0 0; /* Top padding only */
     color: white;
-    height: 70vh;
 }
 
 .chat-messages {
@@ -123,7 +125,7 @@ main {
 }
 
 .send-button:hover {
-    background-color: #537060;
+    background-color: #5B7A69;
 }
 
 .message {
@@ -154,11 +156,12 @@ main {
     padding: 0.5rem;
     background-color: var(--accent-colour);
     width: 100%;
+    margin: 0;
 }
 
 #userInput {
     flex: 1;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
@@ -228,6 +231,7 @@ button:hover {
     
     .genre-selection {
         flex-direction: column;
+        margin: 1rem 0;
     }
     
     .select-container, .button {
