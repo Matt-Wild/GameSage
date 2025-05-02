@@ -65,8 +65,7 @@ h1 {
 }
 
 main {
-    max-width: 1200;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 1.5rem;
     flex: 1;
@@ -114,10 +113,9 @@ main {
 
 /* Send button with box styling */
 .send-button {
-    margin-left: 0.5rem; /* Additional left spacing */
+    padding: 0.5rem 1rem;
     background-color: #608371;
     color: white;
-    padding: 0.5rem 1rem;
     border: 2px solid #4B6658;
     border-radius: 5px;
     cursor: pointer;
@@ -125,7 +123,7 @@ main {
 }
 
 .send-button:hover {
-    background-color: #45a049;
+    background-color: #537060;
 }
 
 .message {
@@ -152,18 +150,19 @@ main {
 
 .input-area {
     display: flex;
-    border-top: 1px solid #ccc;
+    gap: 0.5rem;
+    padding: 0.5rem;
     background-color: var(--accent-colour);
     width: 100%;
 }
 
 #userInput {
-    flex: 3;
+    flex: 1;
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    width: 80%;
+    width: auto;
 }
 
 #chatInput {
