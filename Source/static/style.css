@@ -75,10 +75,11 @@ main {
 /* Layout: Chat and Recommendation side-by-side */
 .content-wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 0.5rem;
+    gap: 2rem;
+    padding: 1rem 2rem; /* Less horizontal padding */
+    max-width: 100%;     /* Use full width */
+    box-sizing: border-box;
 }
 
 /* Recommendation section styling */
@@ -113,6 +114,7 @@ main {
 
 /* Send button with box styling */
 .send-button {
+    margin-left: 0.5rem; /* Additional left spacing */
     background-color: #608371;
     color: white;
     padding: 0.5rem 1rem;
