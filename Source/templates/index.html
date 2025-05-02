@@ -12,66 +12,69 @@
     </header>
     
     <main class= "darkmode">
-        <!-- Chat Container and Contents -->
-        <div class="chat-container">
-            <div class="chat-messages" id="chatWindow">
-        <!-- Chat History should be here -->
-            </div>
-            
-            <div class="input-area">
-                <input type="text" id="chatInput" placeholder="Do you have a question?">
-                <button onclick="sendMessage()">Send</button>
-            </div>
-        </div>
-        <!-- Random Recommendation -->
-        <section class="recommendation-section">
-            <h2>Recommend by Genre:</h2>
-            
-            <div class="genre-selection">
-                <div class="select-container">
-                    <select id="primaryGenre">
-                        <option value="" disabled selected>Select</option>
-                        <option value="action">Action</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="rpg">RPG</option>
-                        <option value="strategy">Strategy</option>
-                        <option value="simulation">Simulation</option>
-                        <option value="sports">Sports</option>
-                        <option value="racing">Racing</option>
-                        <option value="puzzle">Puzzle</option>c
-                        <option value="multiplayer">Multiplayer</option>
-                        <option value="singleplayer">Singleplayer</option>
-                        <option value="indie">Indie</option>
-                        <option value="aaa">AAA</option>
-                        <option value="casual">Casual</option>
-                        <option value="competitive">Competitive</option>
-                        <option value="open-world">Open World</option>
-                        <option value="story-rich">Story-Rich</option>
-                    </select>
-                    <select id="secondaryGenre">
-                        <option value="" disabled selected>Select</option>
-                        <option value="action">Action</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="rpg">RPG</option>
-                        <option value="strategy">Strategy</option>
-                        <option value="simulation">Simulation</option>
-                        <option value="sports">Sports</option>
-                        <option value="racing">Racing</option>
-                        <option value="puzzle">Puzzle</option>c
-                        <option value="multiplayer">Multiplayer</option>
-                        <option value="singleplayer">Singleplayer</option>
-                        <option value="indie">Indie</option>
-                        <option value="aaa">AAA</option>
-                        <option value="casual">Casual</option>
-                        <option value="competitive">Competitive</option>
-                        <option value="open-world">Open World</option>
-                        <option value="story-rich">Story-Rich</option>
-                    </select>
+        <div class="content-wrapper">
+            <!-- Random Recommendation -->
+            <section class="recommendation-section">
+                <h2>Recommend by Genre:</h2>
+                
+                <div class="genre-selection">
+                    <div class="select-container">
+                        <select id="primaryGenre">
+                            <option value="" disabled selected>Select</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="rpg">RPG</option>
+                            <option value="strategy">Strategy</option>
+                            <option value="simulation">Simulation</option>
+                            <option value="sports">Sports</option>
+                            <option value="racing">Racing</option>
+                            <option value="puzzle">Puzzle</option>c
+                            <option value="multiplayer">Multiplayer</option>
+                            <option value="singleplayer">Singleplayer</option>
+                            <option value="indie">Indie</option>
+                            <option value="aaa">AAA</option>
+                            <option value="casual">Casual</option>
+                            <option value="competitive">Competitive</option>
+                            <option value="open-world">Open World</option>
+                            <option value="story-rich">Story-Rich</option>
+                        </select>
+                        <select id="secondaryGenre">
+                            <option value="" disabled selected>Select</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="rpg">RPG</option>
+                            <option value="strategy">Strategy</option>
+                            <option value="simulation">Simulation</option>
+                            <option value="sports">Sports</option>
+                            <option value="racing">Racing</option>
+                            <option value="puzzle">Puzzle</option>c
+                            <option value="multiplayer">Multiplayer</option>
+                            <option value="singleplayer">Singleplayer</option>
+                            <option value="indie">Indie</option>
+                            <option value="aaa">AAA</option>
+                            <option value="casual">Casual</option>
+                            <option value="competitive">Competitive</option>
+                            <option value="open-world">Open World</option>
+                            <option value="story-rich">Story-Rich</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="getRecommendation()">Random Recommendation</button>
+                </div>
+            </section>
+
+            <!-- Chat Container and Contents -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chatWindow">
+            <!-- Chat History should be here -->
                 </div>
                 
-                <button onclick="getRecommendation()">Random Recommendation</button>
+                <div class="input-area">
+                    <input type="text" id="chatInput" placeholder="What kind of game are you looking for?">
+                    <button class="send-button" onclick="sendMessage()">Send</button>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>

@@ -72,22 +72,58 @@ main {
     flex: 1;
 }
 
+/* Layout: Chat and Recommendation side-by-side */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Recommendation section styling */
+.recommendation-section {
+    width: 30%;
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+}
+
 /* Chat Container Styles */
 .chat-container {
-    background-color: var(--base-variant);
-    border: 1px solid #999;
-    border-radius: 4px;
-    margin-bottom: 2rem;
-    overflow: hidden;
-    width: 100%;
-    max-width: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #2a2a2a;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    height: 70vh;
 }
 
 .chat-messages {
-    min-height: 350px;
-    max-height: 350px;
+    flex: 1;
     overflow-y: auto;
-    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #1e1e1e;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+/* Send button with box styling */
+.send-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: 2px solid #388e3c;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.send-button:hover {
+    background-color: #45a049;
 }
 
 .message {
