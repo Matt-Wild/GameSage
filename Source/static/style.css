@@ -93,6 +93,37 @@ main {
     flex-direction: row;
 }
 
+/* Container for both left-hand sections */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 25%;
+    gap: 1rem;
+}
+
+/* Personal Preference Section Styling */
+.preference-section {
+    background-color: var(--base-variant);
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    flex: none;
+}
+
+/* Textarea styling to match aesthetic */
+.preference-section textarea {
+    width: 100%;
+    height: 150px;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
 /* Recommendation section styling */
 .recommendation-section {
     background-color: var(--base-variant);
