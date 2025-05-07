@@ -91,13 +91,16 @@
     <script>
         // Chat functionality
         async function sendMessage() {
+            // Get input fields and chat window elements
             let inputField = document.getElementById("chatInput");
             let preferenceField = document.getElementById("preferenceInput");
             let chatWindow = document.getElementById("chatWindow");
-
+            
+            // Fetch prompt and preference
             const prompt = inputField.value.trim();
             const preference = preferenceField.value.trim();
-
+            
+            // Ignore if no prompt
             if (!prompt) return;
 
             // Add user's message to chat
@@ -106,14 +109,17 @@
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
             try {
+                // Fetch a response from Python backend
                 const response = await fetch("/generate", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ preference, prompt })
                 });
-
+                
+                // Get data from response
                 const data = await response.json();
-
+                
+                // If successful send response
                 if (data.success) {
                     chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message"><b>${data.game_name}</b><br><br>${data.reason}</div>`;
                     chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Here are some reviews for the game:</div>`;
@@ -124,12 +130,15 @@
 
                     chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">${data.follow_up}</div>`;
                 } else {
+                    // Not successful, request new prompt
                     chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong, please try again with a different prompt...</div>`;
                 }
 
+                // Automatically scroll chat window
                 chatWindow.scrollTop = chatWindow.scrollHeight;
 
             } catch (error) {
+                // Something went wrong when trying to fetch the response from the Python backend
                 console.error("Error contacting server:", error);
                 chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong while contacting the server.</div>`;
             }
