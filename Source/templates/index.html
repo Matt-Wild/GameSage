@@ -65,7 +65,7 @@
                             </select>
                         </div>
                         
-                        <button onclick="getRecommendation()">Random Recommendation</button>
+                        <button onclick="getRecommendation()">Send Recommendation!</button>
                     </div>
                 </section>
             </div>
@@ -186,8 +186,101 @@
         }
 
         // Random Recommendation functionality
-        function getRecommendation() {
-            document.getElementById("recommendationText").innerText = "Recommendation";
+        async function getRecommendation() {
+            // Get dropdown values
+            const primary = document.getElementById("primaryGenre").value;
+            const secondary = document.getElementById("secondaryGenre").value;
+
+            // Ensure at least one genre is selected
+            if (!primary && !secondary) {
+                alert("Please select at least one genre.");
+                return;
+            }
+
+            // Construct prompt from selected genres
+            let genrePrompt = "Can you recommend me a game";
+            if (primary && secondary) {
+                genrePrompt += ` that combines ${primary} and ${secondary} genres?`;
+            } else if (primary || secondary) {
+                const selected = primary || secondary;
+                genrePrompt += ` that fits the ${selected} genre?`;
+            }
+
+            // Reuse the same logic as sendMessage
+            let chatWindow = document.getElementById("chatWindow");
+            let preferenceField = document.getElementById("preferenceInput");
+            const preference = preferenceField.value.trim();
+
+            // Display user message
+            chatWindow.innerHTML += `<strong>You:</strong><br><div class="user-message">${genrePrompt}</div>`;
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            // Generate unique ID for the "Thinking..." placeholder
+            const thinkingId = `thinking-${Date.now()}`;
+            let thinkingTimeout = setTimeout(() => {
+                const thinkingWrapper = document.createElement("div");
+                thinkingWrapper.id = thinkingId;
+                thinkingWrapper.innerHTML = `
+                    <strong>GameSage:</strong><br>
+                    <div class="ai-message thinking-message">Thinking...</div>
+                `;
+                chatWindow.appendChild(thinkingWrapper);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 1000);
+
+            try {
+                // Fetch a response from Python backend
+                const response = await fetch("/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ preference, prompt })
+                });
+                
+                // Get data from response
+                const data = await response.json();
+
+                // Clear the timeout if the response is quick
+                clearTimeout(thinkingTimeout);
+
+                // Remove the "Thinking..." wrapper if it exists
+                const thinkingElement = document.getElementById(thinkingId);
+                if (thinkingElement) {
+                    thinkingElement.remove();
+                }
+
+                // If successful send response
+                if (data.success) {
+                    chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message"><b>${data.game_name}</b><br><br>${data.reason}</div>`;
+                    chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Here are some reviews for the game:</div>`;
+
+                    data.reviews.forEach((review, i) => {
+                        chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message review-message">${i + 1}. ${review}</div>`;
+                    });
+
+                    chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">${data.follow_up}</div>`;
+                } else {
+                    // Not successful, request new prompt
+                    chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong, please try again with a different prompt...</div>`;
+                }
+
+                // Automatically scroll chat window
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            } catch (error) {
+                // Something went wrong when trying to fetch the response from the Python backend
+                console.error("Error contacting server:", error);
+
+                // Clear the timeout if the error occurs quickly
+                clearTimeout(thinkingTimeout);
+
+                // Remove the "Thinking..." wrapper if it exists
+                const thinkingElement = document.getElementById(thinkingId);
+                if (thinkingElement) {
+                    thinkingElement.remove();
+                }
+
+                chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong while contacting the server.</div>`;
+            }
         }
     </script>
 </body>
