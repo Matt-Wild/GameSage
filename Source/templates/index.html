@@ -298,7 +298,7 @@
                 .then(res => res.json())
                 .then(data => {
                     if (data.message) {
-                        const statusElement = document.querySelector("#thinking-status .thinking-message");
+                        const statusElement = document.getElementById("thinking-status");
                         if (statusElement && statusElement.innerText != data.message) {
                             alert("Updating thinking status: " + data.message);
                             statusElement.innerText = data.message;
