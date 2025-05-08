@@ -108,13 +108,13 @@
             inputField.value = "";
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
-            // Clear any existing thinking message
-            const existingThinking = document.getElementById(thinkingId);
-            if (existingThinking) existingThinking.remove();
-
             // Generate unique ID for the thinking container
             const thinkingId = `thinking-status-container`;
             let thinkingTimeout = null;
+
+            // Clear any existing thinking message
+            const existingThinking = document.getElementById(thinkingId);
+            if (existingThinking) existingThinking.remove();
 
             // Schedule "Thinking..." message after 1 second
             thinkingTimeout = setTimeout(() => {
@@ -219,12 +219,13 @@
             chatWindow.innerHTML += `<strong>You:</strong><br><div class="user-message">${genrePrompt}</div>`;
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
+            // Create thinking status
+            const thinkingId = `thinking-status-container`;
+
             // Clear any existing thinking message
             const existingThinking = document.getElementById(thinkingId);
             if (existingThinking) existingThinking.remove();
-
-            // Create thinking status
-            const thinkingId = `thinking-status-container`;
+            
             let thinkingTimeout = setTimeout(() => {
                 const thinkingWrapper = document.createElement("div");
                 thinkingWrapper.id = thinkingId;
