@@ -214,6 +214,7 @@
             let chatWindow = document.getElementById("chatWindow");
             let preferenceField = document.getElementById("preferenceInput");
             const preference = preferenceField.value.trim();
+            const prompt = genrePrompt;
 
             // Display user message
             chatWindow.innerHTML += `<strong>You:</strong><br><div class="user-message">${genrePrompt}</div>`;
@@ -242,7 +243,7 @@
                 const response = await fetch("/generate", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ preference, genrePrompt })
+                    body: JSON.stringify({ preference, prompt })
                 });
                 
                 // Get data from response
