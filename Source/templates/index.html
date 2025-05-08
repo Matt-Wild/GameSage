@@ -242,7 +242,7 @@
                 const response = await fetch("/generate", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ preference, prompt })
+                    body: JSON.stringify({ preference, genrePrompt })
                 });
                 
                 // Get data from response
