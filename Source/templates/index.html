@@ -108,6 +108,10 @@
             inputField.value = "";
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
+            // Add "Thinking..." placeholder and keep reference
+            const thinkingId = `thinking-${Date.now()}`;
+            chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message" id="${thinkingId}">Thinking...</div>`;
+
             try {
                 // Fetch a response from Python backend
                 const response = await fetch("/generate", {
@@ -118,6 +122,12 @@
                 
                 // Get data from response
                 const data = await response.json();
+
+                // Remove the "Thinking..." message
+                const thinkingMessage = document.getElementById(thinkingId);
+                if (thinkingMessage) {
+                    thinkingMessage.remove();
+                }
                 
                 // If successful send response
                 if (data.success) {
@@ -140,6 +150,13 @@
             } catch (error) {
                 // Something went wrong when trying to fetch the response from the Python backend
                 console.error("Error contacting server:", error);
+
+                // Clean up "Thinking..." message if still present
+                const thinkingMessage = document.getElementById(thinkingId);
+                if (thinkingMessage) {
+                    thinkingMessage.remove();
+                }
+
                 chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong while contacting the server.</div>`;
             }
         }
