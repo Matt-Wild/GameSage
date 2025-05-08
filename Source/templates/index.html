@@ -297,8 +297,8 @@
             fetch('/thinking-status')
                 .then(res => res.json())
                 .then(data => {
-                    alert("Thinking status update caught:", data.message);
                     if (data.message) {
+                        alert("Thinking status update caught:", data.message);
                         const statusElement = document.querySelector("#thinking-status .thinking-message");
                         if (statusElement) {
                             statusElement.innerText = data.message;
