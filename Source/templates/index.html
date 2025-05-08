@@ -118,7 +118,7 @@
                 thinkingWrapper.id = thinkingId;
                 thinkingWrapper.innerHTML = `
                     <strong>GameSage:</strong><br>
-                    <div class="ai-message">Thinking...</div>
+                    <div class="ai-message thinking-message">Thinking...</div>
                 `;
                 chatWindow.appendChild(thinkingWrapper);
                 chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -150,7 +150,7 @@
                     chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Here are some reviews for the game:</div>`;
 
                     data.reviews.forEach((review, i) => {
-                        chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">${i + 1}. ${review}</div>`;
+                        chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message review-message">${i + 1}. ${review}</div>`;
                     });
 
                     chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">${data.follow_up}</div>`;

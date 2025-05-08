@@ -193,6 +193,21 @@ main {
     color: #000000
 }
 
+/* For the "Thinking..." message */
+.thinking-message {
+    color: #555;
+    font-style: italic;
+}
+
+/* For review messages */
+.review-message {
+    background-color: #e6f2ff;
+    color: black;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
 .input-area {
     display: flex;
     gap: 0.5rem;
