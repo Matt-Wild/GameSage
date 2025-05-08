@@ -108,8 +108,12 @@
             inputField.value = "";
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
+            // Clear any existing thinking message
+            const existingThinking = document.getElementById(thinkingId);
+            if (existingThinking) existingThinking.remove();
+
             // Generate unique ID for the thinking container
-            const thinkingId = `thinking-${Date.now()}`;
+            const thinkingId = `thinking-status-container`;
             let thinkingTimeout = null;
 
             // Schedule "Thinking..." message after 1 second
@@ -118,7 +122,7 @@
                 thinkingWrapper.id = thinkingId;
                 thinkingWrapper.innerHTML = `
                     <strong>GameSage:</strong><br>
-                    <div class="ai-message thinking-message">Thinking...</div>
+                    <div class="ai-message thinking-message" id="thinking-status">Thinking...</div>
                 `;
                 chatWindow.appendChild(thinkingWrapper);
                 chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -215,14 +219,18 @@
             chatWindow.innerHTML += `<strong>You:</strong><br><div class="user-message">${genrePrompt}</div>`;
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
-            // Generate unique ID for the "Thinking..." placeholder
-            const thinkingId = `thinking-${Date.now()}`;
+            // Clear any existing thinking message
+            const existingThinking = document.getElementById(thinkingId);
+            if (existingThinking) existingThinking.remove();
+
+            // Create thinking status
+            const thinkingId = `thinking-status-container`;
             let thinkingTimeout = setTimeout(() => {
                 const thinkingWrapper = document.createElement("div");
                 thinkingWrapper.id = thinkingId;
                 thinkingWrapper.innerHTML = `
                     <strong>GameSage:</strong><br>
-                    <div class="ai-message thinking-message">Thinking...</div>
+                    <div class="ai-message thinking-message" id="thinking-status">Thinking...</div>
                 `;
                 chatWindow.appendChild(thinkingWrapper);
                 chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -282,6 +290,21 @@
                 chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong while contacting the server.</div>`;
             }
         }
+
+        // Periodically check for new thinking status
+        setInterval(() => {
+            fetch('/thinking-status')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.message) {
+                        const statusElement = document.querySelector("#thinking-status .thinking-message");
+                        if (statusElement) {
+                            statusElement.innerText = data.message;
+                        }
+                    }
+                })
+                .catch(err => console.error("Error fetching thinking status:", err));
+        }, 1000); // Checks every second
     </script>
 </body>
 </html>
