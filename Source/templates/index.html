@@ -65,7 +65,7 @@
                             </select>
                         </div>
                         
-                        <button onclick="getRecommendation()">Send Recommendation!</button>
+                        <button onclick="getRecommendation()">Request Recommendation!</button>
                     </div>
                 </section>
             </div>
@@ -89,8 +89,19 @@
     </footer>
 
     <script>
+        // Is there currently a recommendation processing
+        let isProcessing = false;
+        
         // Chat functionality
         async function sendMessage() {
+            // Check if already processing and update flag
+            if (isProcessing)
+            {
+                alert("Please wait for current recommendation to process.");
+                return;
+            }
+            isProcessing = true;
+
             // Get input fields and chat window elements
             let inputField = document.getElementById("chatInput");
             let preferenceField = document.getElementById("preferenceInput");
@@ -101,7 +112,11 @@
             const preference = preferenceField.value.trim();
             
             // Ignore if no prompt
-            if (!prompt) return;
+            if (!prompt) {
+                // Update flag
+                isProcessing = false;
+                return;
+            }
 
             // Add user's message to chat
             chatWindow.innerHTML += `<strong>You:</strong><br><div class="user-message">${prompt}</div>`;
@@ -180,7 +195,10 @@
                 }
 
                 chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong while contacting the server.</div>`;
-            }
+            } finally {
+                // Update flag
+                isProcessing = false;
+            }   
         }
 
         function handleKeyPress(event) {
@@ -191,6 +209,14 @@
 
         // Random Recommendation functionality
         async function getRecommendation() {
+            // Check if already processing and update flag
+            if (isProcessing)
+            {
+                alert("Please wait for current recommendation to process.");
+                return;
+            }
+            isProcessing = true;
+
             // Get dropdown values
             const primary = document.getElementById("primaryGenre").value;
             const secondary = document.getElementById("secondaryGenre").value;
@@ -198,6 +224,8 @@
             // Ensure at least one genre is selected
             if (!primary && !secondary) {
                 alert("Please select at least one genre.");
+                // Update flag
+                isProcessing = false;
                 return;
             }
 
@@ -290,7 +318,10 @@
                 }
 
                 chatWindow.innerHTML += `<strong>GameSage:</strong><br><div class="ai-message">Something went wrong while contacting the server.</div>`;
-            }
+            } finally {
+                // Update flag
+                isProcessing = false;
+            } 
         }
 
         // Periodically check for new thinking status
