@@ -1,41 +1,178 @@
 /* Light/Default Theme */
-:root{
-    --base-colour: #ffffff;
-    --base-variant: #D7E5DE;
-    --text-colour: #080C0A;
-    --text-secondary: #080C0A;
-    --primary-colour: #9CBEAD;
-    --accent-colour: #7DAA93;
-    --input-colour: #FFFFFF;
-    --user-container: #7DAA93;
-    --ai-container: #FFFFFF;
-    min-height: 0
+:root {
+    /* Colours */
+    --background-colour: #ffffff;
+    --base-colour: #D7E5DE;
+    --lighter-colour: #9CBEAD;
+    --darker-colour: #7DAA93;
+    --primary-text-colour: #080C0A;
+    --secondary-text-colour: #ffffff;
 }
+
 /* Dark Theme */
-.darkmode{
-    --base-colour: #694D75;
-    --base-variant: #608371;
-    --text-colour: black;
-    --text-secondary: black;
-    --primary-colour: #7DAA93;
-    --accent-colour: #7DAA93;
-    --input-container: #FFFFFF;
-    --user-container: #7DAA93;
-    --ai-container: #FFFFFF;
-    min-height: 0
+.darkmode {
+    /* Colours */
+    --background-colour: #2c2c2c;
+    --base-colour: #4C4C4C;
+    --lighter-colour: #5C5C5C;
+    --darker-colour: #3c3c3c;
+    --primary-text-colour: #8f8f8f;
+    --secondary-text-colour: #ffffff;
 }
-/* Accessibility High Contrast Theme */
-.highcontrast{
-    --base-colour: #694D75;
-    --base-variant: #608371;
-    --text-colour: black;
-    --text-secondary: black;
-    --primary-colour: #7DAA93;
-    --accent-colour: #7DAA93;
-    --input-container: #FFFFFF;
-    --user-container: #7DAA93;
-    --ai-container: #FFFFFF;
-    min-height: 0
+
+/* High Contrast Theme */
+.highcontrast {
+    /* Colours */
+    --background-colour: #ffb000;
+    --base-colour: #dc267e;
+    --lighter-colour: #fe6000;
+    --darker-colour: #648fff;
+    --primary-text-colour: #000000;
+    --secondary-text-colour: #000000;
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    z-index: 1000;
+}
+
+.theme-switcher select {
+    background-color: var(--background-colour);
+    border: 2px solid var(--base-colour);
+    border-radius: 8px;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--primary-text-colour);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); /* W2 Schools standard drop down arrow asset */
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+}
+
+.theme-switcher select:hover {
+    border-color: var(--lighter-colour);
+}
+
+.theme-switcher select:focus {
+    outline: none;
+    border-color: var(--lighter-colour);
+}
+
+/* Base styles that use theme variables */
+body {
+    background-color: var(--background-colour);
+    color: var(--primary-text-colour);
+}
+
+header {
+    background-color: var(--darker-colour);
+    border-bottom: 2px solid var(--base-colour);
+}
+
+.preference-section, .recommendation-section, .chat-container {
+    border-radius: 12px;
+    border: 1px solid var(--darker-colour);
+    background-color: var(--lighter-colour);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.preference-section:hover, .recommendation-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.chat-container {
+    background-color: var(--lighter-colour);
+    color: var(--primary-text-colour);
+}
+
+.user-message, .ai-message, .review-message, .thinking-message {
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.user-message {
+    margin-left: auto;
+    max-width: 85%;
+    background-color: var(--darker-colour);
+    color: var(--secondary-text-colour);
+}
+
+.ai-message {
+    margin-right: auto;
+    max-width: 85%;
+    background-color: var(--background-colour);
+    color: var(--primary-text-colour);
+}
+
+.review-message {
+    margin: 0.8rem 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.thinking-message {
+    font-style: italic;
+    animation: pulse 2s infinite;
+}
+
+.input-area {
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--darker-colour)
+}
+
+#chatInput {
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--base-colour);
+    width: 100%;
+}
+
+#chatInput:focus {
+    outline: none;
+    border-color: var(--lighter-colour);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+button, .send-button {
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background-color: var(--darker-colour);
+    color: var(--secondary-text-colour)
+}
+
+button:hover, .send-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: var(--lighter-colour)
+}
+
+footer {
+    background-color: var(--darker-colour);
+    color: var(--secondary-text-colour);
 }
 
 * {
@@ -47,7 +184,7 @@
 
 html, body {
     font-family: Arial, sans-serif;
-    background-color: var(--base-colour);
+    background-color: var(--background-colour);
     text-align: center;
     margin: 0;
     padding: 0;
@@ -55,13 +192,6 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-header {
-    background-color: var(--accent-colour);
-    padding: 1rem 0;
-    text-align: center;
-    border-bottom: 2px solid #333;
 }
 
 h1 {
@@ -102,34 +232,29 @@ main {
     gap: 1rem;
 }
 
-/* Personal Preference Section Styling */
-.preference-section {
-    background-color: var(--base-variant);
-    padding: 1rem;
+/* Textarea styling */
+.preference-section textarea {
     border-radius: 8px;
-    color: white;
-    flex: none;
+    padding: 2rem;
+    margin: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--base-colour);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    resize: vertical;
+    min-height: 150px;
+    width: 90%;
 }
 
-/* Textarea styling to match aesthetic */
-.preference-section textarea {
-    width: 100%;
-    height: 150px;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    resize: vertical;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    box-sizing: border-box;
+.preference-section textarea:focus {
+    outline: none;
+    border-color: var(--lighter-colour);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Recommendation section styling */
 .recommendation-section {
-    background-color: var(--base-variant);
     padding: 1rem;
     border-radius: 8px;
-    color: white;
     flex: 1;
 }
 
@@ -138,11 +263,7 @@ main {
     flex: 3;
     display: flex;
     flex-direction: column;
-    background-color: var(--base-variant);
-    border: 1px solid #999;
-    border-radius: 4px;
     padding: 1rem 0 0 0;
-    color: white;
     height: 100%;
     min-height: 0;
 }
@@ -159,16 +280,8 @@ main {
 /* Send button with box styling */
 .send-button {
     padding: 0.5rem 1rem;
-    background-color: #608371;
-    color: white;
-    border: 2px solid #4B6658;
-    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-}
-
-.send-button:hover {
-    background-color: #5B7A69;
 }
 
 .message {
@@ -176,45 +289,6 @@ main {
     padding: 0.75rem;
     border-radius: 8px;
     max-width: 80%;
-}
-
-.user-message {
-    background-color: var(--user-container);
-    margin: 1rem;
-    padding: 1rem;
-    text-align: right;
-}
-
-.ai-message {
-    background-color: var(--ai-container);
-    margin: 1rem;
-    padding: 1rem;
-    text-align: left;
-    color: #000000
-}
-
-/* For the "Thinking..." message */
-.thinking-message {
-    color: #555;
-    font-style: italic;
-}
-
-/* For review messages */
-.review-message {
-    background-color: #e6f2ff;
-    color: black;
-    padding: 8px;
-    border-radius: 8px;
-    margin-bottom: 5px;
-}
-
-.input-area {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background-color: var(--accent-colour);
-    width: 100%;
-    margin: 0;
 }
 
 .genre-selection {
@@ -226,30 +300,45 @@ main {
 
 .genre-selection button {
     margin-bottom: 0;
+
 }
 
-#chatInput {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/* Select container styling */
+.select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--base-colour);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.select-container select {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--darker-colour);
+    background-color: var(--background-colour);
+    color: var(--primary-text-colour);
     font-size: 1rem;
-    width: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1.2em;
 }
 
 button {
     padding: 0.75rem 1rem;
-    background-color: var(--primary-colour);
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
     white-space: nowrap;
     transition: background-color 0.2s;
-}
-
-button:hover {
-    background-color: var(--accent-colour);
 }
 
 /* Desktop-specific Styles */
@@ -295,16 +384,18 @@ button:hover {
     .genre-selection {
         flex-direction: column;
         margin: 1rem 0;
+        border-radius: 4px;        
     }
     
     .select-container, .button {
         width: 100%;
+        
     }
 }
 
-footer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #222;
-    color: white;
+/* Animation for thinking message */
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
 }
