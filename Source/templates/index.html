@@ -8,15 +8,22 @@
 </head>
 <body>
     <header>
-       <h1>Welcome to GameSage</h1>
+        <div class="theme-switcher">
+            <select id="themeSelect" onchange="changeTheme(this.value)">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="highcontrast">High Contrast</option>
+            </select>
+        </div>
+        <h1>Welcome to GameSage</h1>
     </header>
     
-    <main class= "darkmode">
+    <main class>
         <div class="content-wrapper">
             <div class="sidebar">
                 <!-- Personal Preference Section -->
                 <section class="preference-section">
-                    <h2>Personal Preference:</h2>
+                    <br><h2>Personal Preference:</h2><br>
                     <textarea id="preferenceInput" placeholder="Describe your ideal game experience..."></textarea>
                 </section>
                 <!-- Random Recommendation -->
@@ -338,6 +345,31 @@
                 })
                 .catch(err => console.error("Error fetching thinking status:", err));
         }, 1000); // Checks every second
+
+        // Add theme switching functionality
+        function changeTheme(theme) {
+            // Remove all theme classes
+            document.body.classList.remove('darkmode', 'highcontrast');
+            
+            // Apply the selected theme
+            if (theme === 'dark') {
+                document.body.classList.add('darkmode');
+            } else if (theme === 'highcontrast') {
+                document.body.classList.add('highcontrast');
+            }
+            // Default theme (light) is applied when no class is added
+            
+            // Save the preference
+            localStorage.setItem('theme', theme);
+        }
+
+        // Load saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const themeSelect = document.getElementById('themeSelect');
+            themeSelect.value = savedTheme;
+            changeTheme(savedTheme);
+        });
     </script>
 </body>
 </html>
